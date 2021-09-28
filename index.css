@@ -20,19 +20,18 @@ body {
 }
 
 #navbar {
-background-color: #858c51;
+  background-color: #858c51;
 }
 
 .nav-list {
-display: flex;
-justify-content: flex-end;
-list-style-type: none;
+  display: flex;
+  justify-content: flex-end;
+  list-style-type: none;
 }
 
-
 a {
-    text-decoration: none;
-    color:#f0f0f0;
+  text-decoration: none;
+  color: #f0f0f0;
 }
 
 #welcome-section {

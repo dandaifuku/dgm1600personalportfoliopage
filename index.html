@@ -1,20 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="index.css" rel="stylesheet">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="index.css" rel="stylesheet" />
     <title>PersonalPortfolioPage</title>
-</head>
-<body>
-    <nav id="navbar"></nav>
+  </head>
+  <body>
+    <nav id="navbar">
+      <ul class="nav-list">
+        <li>
+          <a href="#welcome-section">About</a>
+        </li>
+        <li>
+          <a href="#projects">Work</a>
+        </li>
+        <li>
+          <a href="#contact">Contact</a>
+        </li>
+      </ul>
+    </nav>
     <section id="welcome-section">
-        <h1>Hello! I am Dai</h1>
-        <p>a web developer<p>
+      <h1>Hello! I am Dai</h1>
+      <p>a web developer</p>
     </section>
-   <section id="projects">
-       <h3>These are some of my projects!</h3>
-   </section> 
-</body>
+
+    <section id="projects">
+      <h3>These are some of my projects!</h3>
+      <div class="projects-grid">
+        <a href="#" class="project-tile">
+          <figure>
+            <img />
+            <figcaption>My figure caption</figcaption>
+          </figure>
+        </a>
+      </div>
+    </section>
+    <section id="contact">
+<a href="https://github.com/dandaifuku" id="profile-link" target="blank"> Github</a>
+    </section>
+  </body>
+  <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </html>

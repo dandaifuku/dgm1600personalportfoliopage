@@ -21,12 +21,24 @@ body {
 
 #navbar {
   background-color: #858c51;
+  position: fixed;
+  width: 100%;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+  padding: .68rem 0rem;
 }
 
 .nav-list {
   display: flex;
   justify-content: flex-end;
   list-style-type: none;
+}
+
+.nav-list a:hover {
+  background-color:#b35c56;
+}
+
+nav a {
+  padding: 1rem;
 }
 
 a {

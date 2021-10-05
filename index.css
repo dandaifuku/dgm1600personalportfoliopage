@@ -8,6 +8,18 @@ html {
   scroll-behavior: smooth;
 }
 
+@media (max-width: 1200px) {
+  html {
+    font-size: 60%;
+  }
+}
+
+@media (max-width: 720px) {
+  html {
+    font-size: 40%;
+  }
+}
+
 /* *,
 *::before,
 *::after {
@@ -75,7 +87,7 @@ a {
 
 #projects {
   background-color: #8599a6;
-  color: #d0d7d9;
+  color: #212026;
   display: flex;
   padding: 8rem 1.5rem;
   flex-direction: column;
@@ -85,23 +97,55 @@ a {
   height: 100vh;
 }
 
+#projects h3 {
+  font-size: 3rem;
+}
+
 .projects-grid {
   display: flex;
   flex-wrap: wrap;
-  height: 1280px;
   justify-content: center;
 }
 
-.project-tile figure {
-  font-size: xx-small
+.project-tile {
+  margin: 2rem;
+  font-size: xx-small;
 }
 
 .project-tile img{
-width: 63px;
-height: 88px;
+ height: 220px;
 }
 
 #contact {
   background-color: #727363;
-  height: 25vh;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color:#d0d7d9; 
+}
+
+#contact h2 {
+  padding: 0rem;
+}
+
+#contact p {
+ padding: .5rem;
+  font-size: 1.5rem;
+}
+
+#contact div {
+padding: 2rem;
+}
+
+#contact div a {
+padding: 2rem;
+color:#d0d7d9;
+text-shadow: 2px 2px 1px #212026;
+transition: transform 0.3s linear;
+}
+
+#contact div a:hover {
+  transform: translateY(8px);
 }

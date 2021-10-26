@@ -1,6 +1,33 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: cadetblue;
+    padding: 2em 0;
+}
+
+button {
+    font-size: large;
+    background-color: thistle;
+    border-radius: 8px;
+}
+
+button:hover {
+    background-color: rgb(243, 214, 243);
+}
+
 main {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+
+figure {
+    margin: 10px;
 }
 
 figure img {

@@ -36,3 +36,20 @@ section {
 .shipName {
     font-size: x-large;
 }
+
+a {
+    font-size: x-large;
+    color: white;
+}
+
+a li {
+    background-color: black;
+}
+
+li:hover {
+    background-color: gray;
+}
+
+a:hover {
+    color: white;
+}

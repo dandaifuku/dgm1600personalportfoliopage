@@ -1,0 +1,38 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header {
+    font-family: 'Azeret Mono', monospace;
+    font-size: xx-large;
+}
+
+footer {
+    font-family: 'Azeret Mono', monospace;
+    text-align: center;
+}
+
+.mainContainer {
+    display: flex;
+}
+
+.nav {
+    margin-left: 2em;
+}
+
+section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.box {
+    text-align: center;
+}
+
+.shipName {
+    font-size: x-large;
+}

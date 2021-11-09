@@ -4,7 +4,13 @@ import { getLastNumber, removeChildren } from '../utils/index.js'
 const main = document.querySelector('#main')
 
 const mainHeader = document.createElement('header')
+const headerText = document.createElement('h3')
+mainHeader.appendChild(headerText)
+headerText.textContent = 'Star Wars Characters'
+headerText.className = 'text'
 document.body.insertBefore(mainHeader, main)
+
+populateDOM(people)
 
 const allButton = document.createElement('button')
 allButton.textContent = 'All Characters'

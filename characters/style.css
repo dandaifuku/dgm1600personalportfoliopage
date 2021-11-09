@@ -1,29 +1,42 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Nova Slim', cursive;
 }
 
 header {
     display: flex;
-    justify-content: flex-end;
-    background-color: cadetblue;
+    justify-content:center;
+    background-color:black;
+    color: gold;
     padding: 2em 0;
+    font-size: xx-large;
+}
+
+.text {
+    margin-right: 3em;
 }
 
 button {
     font-size: large;
-    background-color: thistle;
+    background-color:gold;
     border-radius: 8px;
+    margin-right: 20px;
 }
 
 button:hover {
-    background-color: rgb(243, 214, 243);
+    background-color: goldenrod;
+}
+
+body {
+    background-color: black;
 }
 
 main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    background-color: black;
 }
 
 figure {
@@ -32,4 +45,15 @@ figure {
 
 figure img {
     width: 200px;
+    border: 1px solid gold;
+}
+
+figcaption {
+    text-align: center;
+    color: gold;
+}
+
+footer {
+    color: darkgray;
+    text-align: center;
 }

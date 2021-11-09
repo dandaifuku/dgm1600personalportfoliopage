@@ -1,24 +1,39 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Raleway', sans-serif;
+}
+
 header {
-    background-color: blue;
-    color: white;
+    background-color: black;
+    color: gold;
+    font-size: 3rem;
+    text-align: center;
+    padding: 20px;
+    border-bottom: 10px solid gold;
 }
 
 figure {
     background-color: black;
+    margin: 2em;
+    border: 10px solid gold;
 }
 
 img {
-    border: 8px solid gold;
+    border-bottom: 3px solid gold;
 }
 
 figcaption {
     color: white;
     text-align: center;
+    align-items: center;
     font-size: xx-large;
+    padding: 5px;
 }
 
 main {
 display: flex;
 flex-wrap: wrap;
 justify-content: center;
+background-color: black;
 }

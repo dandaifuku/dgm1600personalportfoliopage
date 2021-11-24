@@ -3,18 +3,46 @@
     box-sizing: border-box;
 }
 
+header {
+    background-color: navy;
+    padding: 2em
+}
+
+header h1 {
+margin-bottom: .75em;
+color: white;
+}
+
+button {
+    font-size: medium;
+    border-radius: 10px;
+    margin-right: 2em;
+}
+
 .senators {
     display: flex;
     flex-wrap: wrap;
+    background-color: darkred;
 }
 
 figure {
     width: 160px;
+    height: 200px;
     display: flex;
     flex-direction: column;
-    margin: 1em;
+    margin: 1.5em;
+    border: 3px solid black;
 }
 
 figcaption {
     text-align: center;
+    background-color: white;
+}
+
+footer {
+    text-align: center;
+    font-size: x-large;
+    padding: .25em;
+    background-color: navy;
+    color: lightgray;
 }

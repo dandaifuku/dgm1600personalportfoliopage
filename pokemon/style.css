@@ -1,6 +1,7 @@
 * {
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Pokemon Solid', sans-serif;
 }
 
 .pokeGrid {
@@ -33,17 +34,27 @@
     height: 100%;
     position: absolute;
     backface-visibility: hidden;
+    color: white;
 }
 
 .front {
-    background-color: red;
+    background-color: #81DDF5;
 }
 
 .back {
-    background-color: blue;
+    background-color: #F5BEEB;
     transform: rotateY(180deg);
 }
+
 
 figure img {
     width: 200px;
 }
+
+figcaption {
+    text-transform: capitalize;
+    line-height: 2.5em;
+    text-align: center;
+    font-size: 150%;
+}
+

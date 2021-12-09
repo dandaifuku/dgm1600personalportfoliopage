@@ -32,7 +32,7 @@ button {
 
 .scene {
     width: 200px;
-    height: 260px;
+    height: 300px;
     margin: .5em;
     perspective: 600px;
 }
@@ -78,9 +78,9 @@ button {
 }
 .back h4 {
     font-size: large;
-    margin-top: 1rem;
+    margin-top: .5rem;
 }
-.back li, p {
+.back li {
     font-size: small;
 }
 
@@ -91,8 +91,7 @@ figure img {
 
 figcaption {
     text-transform: capitalize;
-    line-height: 2.5em;
     text-align: center;
-    font-size: 150%;
+    font-size: x-large;
 }
 

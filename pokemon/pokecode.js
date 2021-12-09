@@ -158,9 +158,9 @@ function populateCardFront(pokemon) {
   const pokeImg = document.createElement("img");
   pokeImg.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
   console.log(pokeImg.srcset)
-  // if(pokeImg.srcset == 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/N/A.png') {
-  //   newPokemonImg()
-  // }
+  if(pokeImg.srcset == 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/N/A.png') {
+    pokeImg.srcset = '../images/pokeball.png'
+  }
 
   const pokeCaption = document.createElement("figcaption");
 
@@ -227,15 +227,15 @@ function populateCardFront(pokemon) {
 function populateCardBack(pokemon) {
   const pokeBack = document.createElement("div");
   pokeBack.className = "cardFace back";
+
+  if(pokemon.id !== 'N/A') {
   const pokeID = document.createElement("h4")
-  pokeID.textContent = "ID:"
+  pokeID.textContent = `ID: ${pokemon.id}`
   pokeBack.appendChild(pokeID)
-  let pokemonId = document.createElement("p")
-  pokemonId.textContent = pokemon.id
-  pokeBack.appendChild(pokemonId)
+  }
+
   const label = document.createElement("h4");
-  label.textContent = "Abilities:";
-  pokeBack.appendChild(label);
+  label.textContent = 'Abilities:';
   const abilityList = document.createElement("ul");
   pokemon.abilities.forEach((abilityItem) => {
     let listItem = document.createElement("li");
@@ -250,6 +250,23 @@ function populateCardBack(pokemon) {
     typeItem.textContent = pokeType.type.name 
     typeslist.appendChild(typeItem)
   })
+
+  if(pokemon.stats) {
+  const pokeHp = document.createElement('h4')
+  pokeHp.textContent = `HP: ${pokemon.stats[0].base_stat}`
+  pokeBack.appendChild(pokeHp)
+  }
+
+  const pokeHeight = document.createElement('h4')
+  pokeHeight.textContent = `Height: ${pokemon.height}`
+
+  const pokeWeight = document.createElement('h4')
+  pokeWeight.textContent = `Weight: ${pokemon.weight}`
+
+
+  pokeBack.appendChild(pokeHeight)
+  pokeBack.appendChild(pokeWeight)
+  pokeBack.appendChild(label);
   pokeBack.appendChild(abilityList);
   pokeBack.appendChild(typesLable)
   pokeBack.appendChild(typeslist)

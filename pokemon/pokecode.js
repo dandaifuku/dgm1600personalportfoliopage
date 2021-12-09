@@ -21,41 +21,60 @@ function getAPIData(url) {
 }
 
 const pokeGrid = document.querySelector(".pokeGrid");
-const loadButton = document.querySelector(".loadPokemon");
-loadButton.addEventListener("click", () => {
-  removeChildren(pokeGrid);
-  loadPokemon(100, 50);
-});
+// const loadButton = document.querySelector(".loadPokemon");
+// loadButton.addEventListener("click", () => {
+//   removeChildren(pokeGrid);
+//   loadPokemon(100, 50);
+// });
 
-const allPokemon = []
 
-const sortButton = document.querySelector('.sortButton')
-sortButton.addEventListener('click', () => {
-getAPIData('https://pokeapi.co/api/v2/pokemon?limit=1118&offset=0')
-  .then(async (data) => {
-    for (const pokemon of data.results) {
-      await getAPIData(pokemon.url).then((pokeData) => {
-        const mappedPokemon = {
-          abilities: pokeData.abilities,
-          height: pokeData.height,
-          id: pokeData.id,
-          name: pokeData.name,
-          types: pokeData.types,
-          weight: pokeData.weight
-        }
-        allPokemon.push(mappedPokemon)
-      })
-    }
+
+/* First, get a reference to the pokemon choice button
+Second, add an event listener on click
+Third, use getAPIData with a URL like this https://pokeapi.co/api/v2/${promptedNameOrId}
+Fourth, populatePokeCard with the pokemon data retrieved */
+const chooseButton = document.querySelector('.choosePokemon')
+chooseButton.addEventListener('click', () => {
+  let searchName = prompt('What is the Name or Id of the pokemon you want to search?')
+  getAPIData(`https://pokeapi.co/api/v2/pokemon/${searchName}`)
+  .then((searchedPokemon) => {
+  populatePokeCards(searchedPokemon)
   })
+   
+   
 })
 
-console.log(allPokemon)
+
+// const allPokemon = []
+
+// const sortButton = document.querySelector('.sortButton')
+// sortButton.addEventListener('click', () => {
+// getAPIData('https://pokeapi.co/api/v2/pokemon?limit=1118&offset=0')
+//   .then(async (data) => {
+//     for (const pokemon of data.results) {
+//       await getAPIData(pokemon.url).then((pokeData) => {
+//         const mappedPokemon = {
+//           abilities: pokeData.abilities,
+//           height: pokeData.height,
+//           id: pokeData.id,
+//           name: pokeData.name,
+//           types: pokeData.types,
+//           weight: pokeData.weight
+//         }
+//         allPokemon.push(mappedPokemon)
+//       })
+//     }
+//   })
+// })
+
+// console.log(allPokemon)
 
 const moreButton = document.querySelector('.morePokemon')
 moreButton.addEventListener('click', () => {
-    let limit = prompt('How many more Pokemon should I load?')
-    let offset = prompt('At which Pokemon ID should I start loading?')
+    let limit = prompt('How many Pokemon do you want to load?')
+    let offset = prompt('Which pokemon ID do you want to start loading from?')
     loadPokemon(offset, limit)
+    removeChildren(pokeGrid);
 })
 
 const newButton = document.querySelector(".newPokemon");
@@ -101,12 +120,12 @@ function getTypesArray(spacedString) {
 
 class Pokemon {
   constructor(name, height, weight, abilities, types) {
-    (this.id = 100),
+      (this.id = 'N/A'),
       (this.name = name),
       (this.height = height),
       (this.weight = weight),
       (this.abilities = abilities),
-      (this.typeps = types);
+      (this.types = types);
   }
 }
 
@@ -128,15 +147,22 @@ function populatePokeCards(singlePokemon) {
   pokeGrid.appendChild(pokeScene);
 }
 
+// function newPokemonImg(singlePokemon) {
+//   let newPokeImg = document.createElement('img')
+//   newPokeImg.srcset = 'images/pokeball.png'
+// }
+
 function populateCardFront(pokemon) {
   const pokeFront = document.createElement("figure");
   pokeFront.className = "cardFace front";
   const pokeImg = document.createElement("img");
-  pokeImg.src = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
+  pokeImg.srcset = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${pokemon.id}.png`;
+  console.log(pokeImg.srcset)
+  // if(pokeImg.srcset == 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/N/A.png') {
+  //   newPokemonImg()
+  // }
 
   const pokeCaption = document.createElement("figcaption");
-
-  console.log(pokemon.name[0].toUpperCase(), pokemon.name)
 
   pokeCaption.textContent = `${pokemon.name[0].toUpperCase()}${pokemon.name.slice(1)}`;
   pokeFront.appendChild(pokeImg);
@@ -201,6 +227,12 @@ function populateCardFront(pokemon) {
 function populateCardBack(pokemon) {
   const pokeBack = document.createElement("div");
   pokeBack.className = "cardFace back";
+  const pokeID = document.createElement("h4")
+  pokeID.textContent = "ID:"
+  pokeBack.appendChild(pokeID)
+  let pokemonId = document.createElement("p")
+  pokemonId.textContent = pokemon.id
+  pokeBack.appendChild(pokemonId)
   const label = document.createElement("h4");
   label.textContent = "Abilities:";
   pokeBack.appendChild(label);
@@ -210,6 +242,8 @@ function populateCardBack(pokemon) {
     listItem.textContent = abilityItem.ability.name;
     abilityList.appendChild(listItem);
   });
+  const typesLable = document.createElement('h4')
+  typesLable.textContent = 'Type:'
   const typeslist = document.createElement('ol')
   pokemon.types.forEach((pokeType) => {
     let typeItem = document.createElement('li')
@@ -217,6 +251,7 @@ function populateCardBack(pokemon) {
     typeslist.appendChild(typeItem)
   })
   pokeBack.appendChild(abilityList);
+  pokeBack.appendChild(typesLable)
   pokeBack.appendChild(typeslist)
   return pokeBack;
 }

@@ -102,8 +102,8 @@ a {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  max-width: 1280px;
-  padding-bottom:8rem;
+  /* max-width: 1280px; */
+  /* padding-bottom:8rem; */
 }
 
 .project-tile {
@@ -125,22 +125,24 @@ a {
 }
 
 .project-tile img{
- height: 420px;
+ height: auto;
  width: 295px;
 }
 
 #contact {
   background-color: #727363;
-  height: 400px;
+  /* height: 300px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   color:#d0d7d9; 
+  width: 100%;
 }
 
 #contact h2 {
   padding: 0rem;
+  margin-top: 2rem;
 }
 
 #contact p {
@@ -152,6 +154,7 @@ a {
 padding: 2rem;
 display: flex;
 justify-content: center;
+margin-top: 2.5rem;
 }
 
 #contact div a {
@@ -171,4 +174,5 @@ footer {
   background-color:#212026;
   display:flex;
   justify-content: center;
+  width: 100%;
 }

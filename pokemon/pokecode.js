@@ -8,17 +8,23 @@ function getAPIData(url) {
   }
 }
 
+let currentData = []
+
  function loadPokemon(offset, limit) {
   getAPIData(
     `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`
   ).then(async (data) => {
+    currentData = [];
     for (const pokemon of data.results) {
-      await getAPIData(pokemon.url).then((pokeData) =>
-        populatePokeCards(pokeData)
+      await getAPIData(pokemon.url).then((pokeData) => {
+        populatePokeCards(pokeData);
+        currentData.push(pokeData)
+      }
       );
     }
   });
 }
+
 
 const pokeGrid = document.querySelector(".pokeGrid");
 // const loadButton = document.querySelector(".loadPokemon");
@@ -28,22 +34,36 @@ const pokeGrid = document.querySelector(".pokeGrid");
 // });
 
 
-
-/* First, get a reference to the pokemon choice button
-Second, add an event listener on click
-Third, use getAPIData with a URL like this https://pokeapi.co/api/v2/${promptedNameOrId}
-Fourth, populatePokeCard with the pokemon data retrieved */
 const chooseButton = document.querySelector('.choosePokemon')
 chooseButton.addEventListener('click', () => {
   let searchName = prompt('What is the Name or Id of the pokemon you want to search?')
   getAPIData(`https://pokeapi.co/api/v2/pokemon/${searchName}`)
   .then((searchedPokemon) => {
+    currentData.push(searchedPokemon)
   populatePokeCards(searchedPokemon)
   })
    
    
 })
 
+const sortButton = document.querySelector('.sortButton')
+ sortButton.addEventListener('click', () => {
+  let typeFilter = prompt("What Pokemon type would you like to sort for?");
+  if(currentData.length === 0) {
+    alert("You don't have any Pokemon to sort.")
+    return
+  }
+  const filteredArray = currentData.filter(pokemonData => {
+    return pokemonData.types.filter((type) => {
+      return type.type.name === typeFilter
+    })
+    .length > 0;
+  })
+  removeChildren(pokeGrid)
+  filteredArray.forEach((pokemonData) => {
+    populatePokeCards(pokemonData)
+  })
+ })
 
 // const allPokemon = []
 
@@ -93,6 +113,7 @@ newButton.addEventListener("click", () => {
     getAbilitiesArray(pokeAbilities),
     getTypesArray(pokeTypes)
   );
+  currentData.push(newPokemon);
   populatePokeCards(newPokemon);
 });
 
@@ -147,11 +168,6 @@ function populatePokeCards(singlePokemon) {
   pokeGrid.appendChild(pokeScene);
 }
 
-// function newPokemonImg(singlePokemon) {
-//   let newPokeImg = document.createElement('img')
-//   newPokeImg.srcset = 'images/pokeball.png'
-// }
-
 function populateCardFront(pokemon) {
   const pokeFront = document.createElement("figure");
   pokeFront.className = "cardFace front";
@@ -175,14 +191,14 @@ function populateCardFront(pokemon) {
 //     let pokeType1 = pokemon.types[0].type.name
 //     let pokeType2 = pokemon.types[1]?.type.name
 //     console.log(pokeType1, pokeType2)
-//     if(!pokeType2) {
-//     card.style.setProperty('background', getPokeTypeColor(pokeType1))
-//     } else {
-//       card.style.setProperty(
-//         'background',
-//         `linear-gradient(${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(pokeType2)})`
-//       )
-//     }
+    // if(!pokeType2) {
+    // card.style.setProperty('background', getPokeTypeColor(pokeType1))
+    // } else {
+    //   card.style.setProperty(
+    //     'background',
+    //     `linear-gradient(${getPokeTypeColor(pokeType1)}, ${getPokeTypeColor(pokeType2)})`
+    //   )
+    // }
 // }
 
 // function getPokeTypeColor(pokeType) {
